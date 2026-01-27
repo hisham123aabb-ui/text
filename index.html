@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Certificate Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 40px;
+            text-align: center;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            width: 250px;
+            font-size: 16px;
+        }
+
+        .certificate {
+            margin-top: 40px;
+            padding: 40px;
+            border: 4px solid #333;
+            background: #fff;
+            display: none;
+        }
+
+        .certificate h1 {
+            margin-bottom: 10px;
+        }
+
+        .certificate p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Certificate Generator</h2>
+
+    <input type="text" id="name" placeholder="Enter Name">
+    <br>
+    <input type="text" id="course" placeholder="Enter Course Name">
+    <br>
+    <button onclick="generateCertificate()">Generate Certificate</button>
+
+    <div class="certificate" id="certificate">
+        <h1>Certificate of Completion</h1>
+        <p>This is to certify that</p>
+        <h2 id="certName"></h2>
+        <p>has successfully completed</p>
+        <h3 id="certCourse"></h3>
+    </div>
+
+    <script>
+        function generateCertificate() {
+            const name = document.getElementById("name").value;
+            const course = document.getElementById("course").value;
+
+            if (name === "" || course === "") {
+                alert("Please fill in all fields");
+                return;
+            }
+
+            document.getElementById("certName").innerText = name;
+            document.getElementById("certCourse").innerText = course;
+            document.getElementById("certificate").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>

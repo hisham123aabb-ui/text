@@ -1,79 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Certificate Generator</title>
+    <title>Certificate Generator v2</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            padding: 40px;
-            background: #f4f4f4;
+            background: #eef2f3;
+            padding: 30px;
         }
         input {
-            padding: 8px;
-            margin: 5px;
-            width: 250px;
+            padding: 10px;
+            margin: 6px;
+            width: 260px;
+            font-size: 16px;
         }
         button {
-            padding: 10px 20px;
+            padding: 12px 25px;
+            font-size: 16px;
             cursor: pointer;
+            background: black;
+            color: white;
+            border: none;
         }
         .cert {
-            margin-top: 30px;
-            padding: 40px;
-            border: 4px solid black;
-            background: white;
-        }
-        .bottom {
-            display: flex;
-            justify-content: space-between;
             margin-top: 40px;
-            padding: 0 40px;
+            padding: 40px;
+            border: 5px double black;
+            background: white;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .name {
+            font-size: 28px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-<h1>Certificate Generator</h1>
+<h1>🎓 Certificate Generator</h1>
 
-<input type="text" id="name" placeholder="Enter your name"><br>
-<input type="text" id="course" placeholder="Enter course name"><br>
-<input type="text" id="sign" placeholder="Signature name"><br><br>
+<input id="name" placeholder="Student Name"><br>
+<input id="course" placeholder="Course Name"><br>
+<input id="sign" placeholder="Instructor Name"><br><br>
 
 <button onclick="generate()">Generate Certificate</button>
 
 <div class="cert">
-    <h2>Certificate of Completion</h2>
-    <p>This is to certify that</p>
-    <h3 id="outName">__________</h3>
+    <h2>CERTIFICATE OF COMPLETION</h2>
+    <p>This certifies that</p>
+    <div class="name" id="outName">________</div>
     <p>has successfully completed</p>
-    <h4 id="outCourse">__________</h4>
+    <h3 id="outCourse">________</h3>
 
-    <div class="bottom">
-        <div>
-            <p>Date:</p>
-            <strong id="outDate">____</strong>
-        </div>
-        <div>
-            <p>Signature:</p>
-            <strong id="outSign">__________</strong>
-        </div>
-    </div>
+    <p>Date: <b id="outDate">____</b></p>
+    <p>Signed by: <b id="outSign">________</b></p>
 </div>
 
 <script>
 function generate() {
-    document.getElementById("outName").innerText =
-        document.getElementById("name").value;
-
-    document.getElementById("outCourse").innerText =
-        document.getElementById("course").value;
-
-    document.getElementById("outSign").innerText =
-        document.getElementById("sign").value;
-
-    document.getElementById("outDate").innerText =
-        new Date().toLocaleDateString();
+    outName.innerText = name.value || "________";
+    outCourse.innerText = course.value || "________";
+    outSign.innerText = sign.value || "________";
+    outDate.innerText = new Date().toDateString();
 }
 </script>
 
